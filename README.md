@@ -3,7 +3,7 @@ User Feedback Aggregation and Analysis Platform
 
 ## Description
 
->> about the project indepth, overview of use
+>> indepth about the project; overview of use
 
 ## Getting Started
 
@@ -22,7 +22,14 @@ User Feedback Aggregation and Analysis Platform
 
 ## Authors
 
->> * Contributors names and contact info
+### Tishchenko, Taras
+*
+### Lang, Marcus
+*
+### Than, Ricky
+*
+### Tran, Huy
+*
 
 ## Version History
 
