@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <a id="head"></a>
+    <title>WikiReview</title>
+    <meta name="description" content="Reviews for any product">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/imgs/universe.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header id="homepage" class="headerm">
+        <nav class="nav main-nav">
+            <a href="/main.html" class="link homelink">WikiReview</a>
+            <a>
+                <a href="/scan.html" class="link">
+                    <img src="imgs/camera.jpg" style="width:20%;height:100%;"></img>
+                    <p>Scanner</p>
+                </a>
+                <form action="#" method="get">
+                    <input type="text" name="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </a>
+            <a href="/settings.html" class="link">
+                <img src="imgs/settings.jpg" style="width:20%;height:100%;"></img>
+                <p>Settings</p>
+            </a>
+            <a href="/login.html" class="link">Profile</a>
+        </nav>
+
+    </header>
+    <p>
+        test
+    </p>
+    <div class="dotted-square">
+        <p>Recommended product photo</p>
+    </div>
+    <a>
+        <img src="imgs/camera.jpg" style="width:20%;height:100%;"></img>
+    </a>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="image1.jpg" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="image2.jpg" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control-next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+</body>
+
+</html>
