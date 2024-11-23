@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - WikiReview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #2c2c2c;
+        }
+    </style>
 </head>
 <body>
     <h2>Login to WikiReview</h2>
