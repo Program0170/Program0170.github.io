@@ -10,14 +10,17 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         h1 {
             font-size: 2.5em;
             text-align: center;
             margin-top: 50px;
         }
+
         p {
             text-align: center;
         }
+        
         a {
             text-decoration: none;
             color: #333;
