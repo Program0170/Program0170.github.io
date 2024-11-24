@@ -8,17 +8,24 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-image: url('https://i.pinimg.com/736x/33/ef/8b/33ef8b9c0b902154a6cd4103a21275ef.jpg');
+            background-size: cover;
+            background-position: center; 
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            flex-direction: column;
+            height: 50vh;
             color: #333;
+            position: relative;
         }
 
         h2 {
             text-align: center;
-            color: #2c2c2c;
+            color: #3204bb;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            font-size: 40px;
         }
 
         form {
@@ -28,6 +35,8 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
+            margin-top: 350px;
+            position: absolute;
         }
 
         label {
@@ -56,12 +65,12 @@
         }
 
         button:hover {
-            background-color: #555;
+            background-color: #f02525;
         }
     </style>
 </head>
 <body>
-    <h2>Register</h2>
+    <h2>Register with WikiReview</h2>
     <form action="register" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
