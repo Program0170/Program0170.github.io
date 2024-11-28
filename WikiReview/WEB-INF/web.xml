@@ -16,4 +16,41 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+
+<servlet>
+    <servlet-name>AddPageServlet</servlet-name>
+    <servlet-class>AddPageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AddPageServlet</servlet-name>
+    <url-pattern>/AddPageServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ViewPageServlet</servlet-name>
+    <servlet-class>ViewPageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ViewPageServlet</servlet-name>
+    <url-pattern>/viewPage</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>ImageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/ImageServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>ListPagesServlet</servlet-name>
+    <servlet-class>ListPagesServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ListPagesServlet</servlet-name>
+    <url-pattern>/ListPagesServlet</url-pattern>
+</servlet-mapping>
+
+
 </web-app>
