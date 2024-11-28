@@ -61,12 +61,22 @@
 </head>
 <body>
     <h1>Welcome to WikiReview</h1>
-    <div class="nav-links">
-        <a href="register.jsp">Register</a> |
-        <a href="login.jsp">Login</a> |
-        <a href="addPage.jsp">Add a Page</a> |
-        <a href="ListPagesServlet">View All Products</a>
 
+    <div class="nav-links">
+        <% 
+            // Check if a session exists and a user is logged in using the implicit session object
+            String username = (session != null) ? (String) session.getAttribute("username") : null;
+        %>
+
+        <% if (username != null) { %>
+            <a href="logout">Logout</a> |
+            <a href="addPage.jsp">Add a Page</a> |
+            <a href="ListPagesServlet">View All Products</a>
+        <% } else { %>
+            <a href="register.jsp">Register</a> |
+            <a href="login.jsp">Login</a> |
+            <a href="ListPagesServlet">View All Products</a>
+        <% } %>
     </div>
 </body>
 </html>

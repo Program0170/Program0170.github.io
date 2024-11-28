@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewPageServlet extends HttpServlet {
     private DataSource dataSource;
@@ -27,31 +28,51 @@ public class ViewPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageId = request.getParameter("id");
+        if (pageId == null) {
+            response.getWriter().println("Invalid product ID.");
+            return;
+        }
 
         try (Connection conn = dataSource.getConnection()) {
-            // Updated SQL to match the pages table structure
-            String sql = "SELECT name, upc, category, description, image_path FROM pages WHERE id = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // Fetch product details
+            String productQuery = "SELECT name, upc, category, description, image_path FROM pages WHERE id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(productQuery)) {
                 stmt.setString(1, pageId);
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
                         request.setAttribute("name", rs.getString("name"));
                         request.setAttribute("upc", rs.getString("upc"));
-			request.setAttribute("category", rs.getString("category"));
+                        request.setAttribute("category", rs.getString("category"));
                         request.setAttribute("description", rs.getString("description"));
                         request.setAttribute("imagePath", rs.getString("image_path"));
-
-                        // Forward the request to the JSP
-                        request.getRequestDispatcher("viewPage.jsp").forward(request, response);
                     } else {
-                        response.getWriter().println("Page not found. <a href=\"index.jsp\">Back to Home</a>");
+                        response.getWriter().println("Product not found.");
+                        return;
                     }
                 }
             }
-        } catch (SQLException e) {
+
+            // Fetch all reviews
+            String reviewQuery = "SELECT rating, comment, username FROM reviews JOIN users ON reviews.user_id = users.id WHERE product_id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(reviewQuery)) {
+                stmt.setInt(1, Integer.parseInt(pageId));
+                try (ResultSet rs = stmt.executeQuery()) {
+                    List<Object[]> reviews = new ArrayList<>();
+                    while (rs.next()) {
+                        reviews.add(new Object[]{rs.getInt("rating"), rs.getString("comment"), rs.getString("username")});
+                    }
+                    request.setAttribute("reviews", reviews);
+                }
+            }
+
+            // Forward to JSP
+            request.getRequestDispatcher("viewPage.jsp").forward(request, response);
+
+        } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().println("Error loading page. Please try again later.");
+            response.getWriter().println("Error loading product details. Please try again later.");
         }
     }
 }
+
 

@@ -1,4 +1,5 @@
 <web-app>
+    <!-- RegisterServlet -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>RegisterServlet</servlet-class>
@@ -8,6 +9,7 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <!-- LoginServlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>LoginServlet</servlet-class>
@@ -17,40 +19,74 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-<servlet>
-    <servlet-name>AddPageServlet</servlet-name>
-    <servlet-class>AddPageServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>AddPageServlet</servlet-name>
-    <url-pattern>/AddPageServlet</url-pattern>
-</servlet-mapping>
+    <!-- LogoutServlet -->
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- AddPageServlet -->
+    <servlet>
+        <servlet-name>AddPageServlet</servlet-name>
+        <servlet-class>AddPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPageServlet</servlet-name>
+        <url-pattern>/AddPageServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- ViewPageServlet -->
+    <servlet>
+        <servlet-name>ViewPageServlet</servlet-name>
+        <servlet-class>ViewPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewPageServlet</servlet-name>
+        <url-pattern>/viewPage</url-pattern>
+    </servlet-mapping>
+
+    <!-- ImageServlet -->
+    <servlet>
+        <servlet-name>ImageServlet</servlet-name>
+        <servlet-class>ImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImageServlet</servlet-name>
+        <url-pattern>/ImageServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- ListPagesServlet -->
+    <servlet>
+        <servlet-name>ListPagesServlet</servlet-name>
+        <servlet-class>ListPagesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListPagesServlet</servlet-name>
+        <url-pattern>/ListPagesServlet</url-pattern>
+    </servlet-mapping>
 
 <servlet>
-    <servlet-name>ViewPageServlet</servlet-name>
-    <servlet-class>ViewPageServlet</servlet-class>
+    <servlet-name>AddReviewServlet</servlet-name>
+    <servlet-class>AddReviewServlet</servlet-class>
 </servlet>
 <servlet-mapping>
-    <servlet-name>ViewPageServlet</servlet-name>
-    <url-pattern>/viewPage</url-pattern>
+    <servlet-name>AddReviewServlet</servlet-name>
+    <url-pattern>/AddReviewServlet</url-pattern>
 </servlet-mapping>
 
-<servlet>
-    <servlet-name>ImageServlet</servlet-name>
-    <servlet-class>ImageServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>ImageServlet</servlet-name>
-    <url-pattern>/ImageServlet</url-pattern>
-</servlet-mapping>
-<servlet>
-    <servlet-name>ListPagesServlet</servlet-name>
-    <servlet-class>ListPagesServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>ListPagesServlet</servlet-name>
-    <url-pattern>/ListPagesServlet</url-pattern>
-</servlet-mapping>
-
+    <!-- AuthFilter -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/addPage.jsp</url-pattern>
+        <url-pattern>/AddPageServlet</url-pattern>
+    </filter-mapping>
 
 </web-app>
