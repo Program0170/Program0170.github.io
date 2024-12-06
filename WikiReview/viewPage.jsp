@@ -11,6 +11,12 @@
         .review-form {
             margin-top: 20px;
         }
+        .user-review {
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+        }
     </style>
     <script>
         function toggleReviewForm() {
@@ -27,31 +33,42 @@
     <img src="<%= request.getAttribute("imagePath") %>" alt="Product Image" />
 
     <%
-        // Use the pre-declared JSP session variable
+        // Check if the user is logged in
         String username = (session != null) ? (String) session.getAttribute("username") : null;
         Integer userId = (session != null) ? (Integer) session.getAttribute("user_id") : null;
+
+        // Get user's review if it exists
+        Object[] userReview = (Object[]) request.getAttribute("userReview");
+        if (userReview != null) {
+            int userRating = (int) userReview[0];
+            String userComment = (String) userReview[1];
     %>
+        <div class="user-review">
+            <h3>Your Review</h3>
+            <p>Rating: <%= userRating %> / 5</p>
+            <p>Comment: <%= userComment %></p>
+            <button onclick="toggleReviewForm()">Edit Your Review</button>
+        </div>
+    <% } %>
 
     <% if (username != null) { %>
-        <!-- Button to toggle review form -->
-        <button onclick="toggleReviewForm()">Write a Review</button>
-
-        <!-- Review form -->
-        <form id="reviewForm" class="hidden review-form" action="AddReviewServlet" method="post">
+        <!-- Review form for new or editing reviews -->
+        <form id="reviewForm" class="<%= (userReview == null) ? "" : "hidden" %> review-form" action="AddReviewServlet" method="post">
             <input type="hidden" name="product_id" value="<%= request.getParameter("id") %>">
             <label for="rating">Rating (1 to 5):</label>
-            <input type="number" id="rating" name="rating" min="1" max="5" required>
+            <input type="number" id="rating" name="rating" min="1" max="5" required
+                   value="<%= (userReview != null) ? userReview[0] : "" %>">
             <br><br>
             <label for="comment">Comment:</label><br>
-            <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+            <textarea id="comment" name="comment" rows="4" cols="50" required><%= (userReview != null) ? userReview[1] : "" %></textarea>
             <br><br>
-            <button type="submit">Submit Review</button>
+            <button type="submit"><%= (userReview != null) ? "Update Review" : "Submit Review" %></button>
         </form>
     <% } else { %>
         <p><a href="login.jsp">Log in</a> to write a review.</p>
     <% } %>
 
-    <h2>Reviews</h2>
+    <h2>Other Reviews</h2>
     <div class="reviews">
         <%
             List<Object[]> reviews = (List<Object[]>) request.getAttribute("reviews");
@@ -77,5 +94,6 @@
     </div>
 </body>
 </html>
+
 
 
