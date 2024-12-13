@@ -38,10 +38,11 @@ CREATE TABLE reviews (id INT AUTO_INCREMENT PRIMARY KEY, product_id INT NOT NULL
 
 ### Executing program
 
->> Place the WikiReview folder in the WebApps folder in your Tomcat installation
->> Open a terminal in the bin folder in your Tomcat installation
->> Run the startup.sh script in your terminal
->> Run the shutdown.sh script when finished
+>> * Place the WikiReview folder in the WebApps folder in your Tomcat installation
+>> * Open a terminal in the bin folder in your Tomcat installation
+>> * Run the startup.sh script in your terminal
+>> * Navigate to http://localhost:8080/WikiReview
+>> * Run the shutdown.sh script when finished
 
 ## Authors
 
